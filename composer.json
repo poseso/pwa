@@ -1,0 +1,53 @@
+{
+    "name": "poseso/pwa",
+    "description": "Laravel Progressive Web App",
+    "keywords": [
+        "laravel", "pwa", "progressive", "web", "app", 
+        "multi-tenancy", "pwa", "laravel", "multitenancy", "multitenant", "progressive-web-app",
+        "laravel-pwa", "pwa-laravel", "google-pwa", "ios-pwa", "firefox-pwa", "safari-pwa",
+        "ios", "android", "chrome", "safari", "firefox" 
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/Codexshaper/laravel-pwa",
+    "support": {
+        "issues": "https://github.com/Codexshaper/laravel-pwa/issues",
+        "source": "https://github.com/Codexshaper/laravel-pwa"
+    },
+    "authors": [
+        {
+            "name": "Md Abu Ahsan Basir",
+            "email": "maab.career@gmail.com"
+        }
+    ],
+    "type": "library",
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.0|^7.1|^7.2|^7.3|^7.4|^8.0",
+        "illuminate/support": "^5.6|^6.0|^7.0|^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0|^8.0",
+        "orchestra/testbench": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodexShaper\\PWA\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodexShaper\\PWA\\": "src/",
+            "CodexShaper\\PWA\\Test\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CodexShaper\\PWA\\PwaServiceProvider"
+            ],
+            "aliases": {
+                "PWA": "CodexShaper\\PWA\\Facades\\PWA"
+            }
+        }
+    }
+}
