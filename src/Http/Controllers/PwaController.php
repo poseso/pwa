@@ -2,6 +2,7 @@
 
 namespace CodexShaper\PWA\Http\Controllers;
 
+use App\Helpers\HandleToolbar;
 use CodexShaper\PWA\Model\Setting;
 use Exception;
 use Illuminate\Http\Request;
@@ -18,6 +19,9 @@ class PwaController extends Controller
      */
     public function index()
     {
+        HandleToolbar::getInstance()->title = __('Administración de PWA');
+        HandleToolbar::getInstance()->description = __('Configuraciones Generales');
+
         $pwa = $this->getPwaInstance();
 
         return view('pwa::settings', compact('pwa'));
@@ -71,7 +75,7 @@ class PwaController extends Controller
         $pwa->status = 1;
         $pwa->save();
 
-        return redirect(route('pwa'))->with('success', 'Pwa created successfully.');
+        return redirect(route('pwa'))->with('success', __('PWA Creado Correctamente.'));
     }
 
     /**
@@ -85,7 +89,7 @@ class PwaController extends Controller
         $pwa->status = 1;
         $pwa->save();
 
-        return redirect(route('pwa'))->with('success', 'Pwa activated successfully.');
+        return redirect(route('pwa'))->with('success', __('PWA Activado Correctamente.'));
     }
 
     /**
@@ -99,7 +103,7 @@ class PwaController extends Controller
         $pwa->status = 0;
         $pwa->save();
 
-        return redirect(route('pwa'))->with('success', 'Pwa deactivated successfully.');
+        return redirect(route('pwa'))->with('success', __('PWA Desactivado Correctamente.'));
     }
 
     /**
@@ -163,7 +167,7 @@ class PwaController extends Controller
         $pwa->data = $data;
         $pwa->save();
 
-        return redirect(route('pwa'))->with('success', 'Pwa settings updated successfully.');
+        return redirect(route('pwa'))->with('success', __('Ajustes de PWA actualizados Correctamente.'));
     }
 
     /**
@@ -187,7 +191,7 @@ class PwaController extends Controller
             if ($pwa) {
                 $pwa->delete();
 
-                return redirect(route('pwa'))->with('success', 'Pwa deleted successfully.');
+                return redirect(route('pwa'))->with('success', __('PWA Eliminado Correctamente.'));
             }
         } catch (Exception $ex) {
             throw new Exception($ex->getMessage());
@@ -412,6 +416,7 @@ class PwaController extends Controller
                     .then(cache => {
                         return cache.addAll([
                             '$base_url/offline',
+                            '{$base_url}/demo1/plugins/custom/fullcalendar/fullcalendar.bundle.css',
                             '{$base_url}/demo1/plugins/global/plugins.bundle.css',
                             '{$base_url}/demo1/plugins/global/plugins-custom.bundle.css',
                             '{$base_url}/demo1/css/style.bundle.css',
@@ -480,10 +485,10 @@ SERVICE_WORKER;
                     scope: '$scope'
                 }).then(function (registration) {
                     // Registration was successful
-                    console.log('Laravel PWA enable successfully. Enjoy it!');
+                    console.log('PWA Activado.');
                 }, function (err) {
                     // registration failed
-                    console.log('Laravel PWA registration failed. Please check the error: ', err);
+                    console.log('Registro de PWA fallido. Error: ', err);
                 });
             }
 REGISTER_SERVICE_WORKER;
