@@ -66,7 +66,7 @@
                 @elseif(isset($pwa->data) && $pwa->status == 0)
                     <form method="POST" action="{{ route('pwa.activate') }}" class="d-inline-block">
                         @csrf
-                        <button class="btn btn-success mb-3 mt-3" type="submit">{{ __('Activate PWA') }}</button>
+                        <button class="btn btn-success mb-3 mt-3" type="submit">{{ __('Activar PWA') }}</button>
                     </form>
                     <form method="POST" action="{{ route('pwa.delete') }}" class="d-inline-block float-right">
                         @csrf
